@@ -1,3 +1,6 @@
+import { Map } from 'immutable';
+
+
 // action 타입 정의
 const CHANGE_COLOR = 'counter/CHANGE_COLOR';
 const INCREMENT = 'counter/INCREMENT';
@@ -9,29 +12,32 @@ export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
 
 //초기상태 정의
-const initialState = {
+const initialState = Map({
   color: 'red',
   number: 0,
-};
+});
 
 // 리듀서 작성
 export default function counter(state = initialState, action) {
   switch (action.type) {
     case CHANGE_COLOR:
-      return {
-        ...state,
-        color: action.color,
-      }
+      // return {
+      //   ...state,
+      //   color: action.color,
+      // }
+      return state.set('color', action.color);
     case INCREMENT:
-      return {
-        ...state,
-        number: state.number + 1,
-      };
+      // return {
+      //   ...state,
+      //   number: state.number + 1,
+      // };
+      return state.update('number', number => number + 1);
     case DECREMENT:
-      return {  
-        ...state,
-        number: state.number - 1,
-      };
+      // return {  
+      //   ...state,
+      //   number: state.number - 1,
+      // };
+      return state.update('number', number => number - 1);
     default:
       return state;
   }

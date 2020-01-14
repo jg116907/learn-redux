@@ -23,13 +23,13 @@ const WaitingList = ({
 }) => {
   // 데이터를 컴포넌트 리스트로 변환
   const waitingItems = waitingList.map(w => (
-    <WaitingItem 
-      key={w.id}
-      text={w.name}
-      entered={w.entered}
-      id={w.id}
-      onEnter={() => onEnter(w.id)}
-      onLeave={() => onLeave(w.id)}
+    <WaitingItem
+      key={w.get('id')}
+      text={w.get('name')}
+      entered={w.get('entered')}
+      id={w.get('id')}
+      onEnter={() => onEnter(w.get('id'))}
+      onLeave={() => onLeave(w.get('id'))}
     />
   ));
   return (

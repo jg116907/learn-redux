@@ -18,7 +18,7 @@ class PaletteContainer extends Component {
 // props로 넣어줄 스토어 상태값
 // 스토어 안의 값 -> props
 const mapStateToProps = state => ({
-  color: state.counter.color,
+  color: state.counter.get('color'),
 });
 
 // props로 넣어줄 액션 생성함수
